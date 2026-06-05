@@ -1,18 +1,21 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div >
+    <NavIndex />
+    <HeroIndex />
+    <MidCardIndex />
+    <EducateIndex />
+    <PreFooterIndex />
+    <LabelIndex />
+    <FooterIndex />
   </div>
 </template>
 
-<script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
-export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
-  }
-}
+<script setup>
+  import NavIndex from '../components/Navbar/NavIndex.vue';
+  import HeroIndex from '../components/MAIN/Hero/HeroIndex.vue';
+  import MidCardIndex from '../components/MAIN/MidCards/MidCardIndex.vue';
+  import EducateIndex from '../components/MAIN/Educate/EducateIndex.vue';
+  import PreFooterIndex from '../components/MAIN/PreFooter/PreFooterIndex.vue';
+  import LabelIndex from '../components/MAIN/Label/LabelIndex.vue';
+  import FooterIndex from '../components/Footer/FooterIndex.vue';
 </script>
