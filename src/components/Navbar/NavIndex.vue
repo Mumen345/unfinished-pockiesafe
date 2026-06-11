@@ -127,7 +127,7 @@
           </router-link>
 
           <router-link
-            to="/"
+            to="/security"
             class="font-medium text-gray-700"
             active-class="underline decoration-2 underline-offset-[6px]"
             @click="mobileMenu = false"

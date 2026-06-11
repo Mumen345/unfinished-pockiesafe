@@ -84,7 +84,10 @@ import bgFrame from '@/assets/bg-frame-4.png'
 .btn {
   width: 100%;
   border-radius: 120px;
-  padding: 12px 24px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   font-size: 15px;
   font-weight: 500;
   cursor: pointer;
@@ -159,7 +162,7 @@ import bgFrame from '@/assets/bg-frame-4.png'
   font-size: 40px;
   font-weight: bold;
   line-height: 1;
-  color: #4ade80; /* Nice bright green */
+  color: #4ade80;
 }
 
 .number-label {
