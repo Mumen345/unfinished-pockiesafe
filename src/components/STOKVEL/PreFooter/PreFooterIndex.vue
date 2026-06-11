@@ -1,61 +1,110 @@
 <template>
-  <section class="bg-[#FFF6EC] py-12 md:py-16 mt-10 w-full mb">
-    <div
-      class="w-[92%] md:w-[85%] lg:w-[75%] mx-auto
-      flex flex-col lg:flex-row items-center justify-between
-      gap-10 lg:gap-20"
-    >
-      <div class="flex justify-center w-full lg:w-1/2">
-        <img
-          src="@/assets/lady-business.png"
-          alt="PreFooter Image"
-          class="w-[220px] sm:w-[260px] md:w-[320px] lg:w-[380px] object-contain"
-        />
-      </div>
+  <section class="prefooter-section">
+    <img
+      src="@/assets/lady-business.png"
+      alt="PreFooter Image"
+      class="lady-img"
+    />
 
-      <div
-        class="w-full lg:w-1/2 flex flex-col
-        items-center lg:items-start
-        text-center lg:text-left"
-      >
-        <div class="flex items-center gap-3 mb-10">
-          <i class="fa-solid fa-shield-halved text-[24px] text-[#FF7A00]"></i>
-
-          <h2 class="text-[22px] md:text-[30px] font-bold text-gray-800">
-            Safe. Licensed. Reliable.
-          </h2>
+    <div class="content-wrapper">
+      <div class="text-container">
+        <div class="header-box">
+          <i class="fa-solid fa-shield-halved"></i>
+          <h2>Safe. Licensed. Reliable.</h2>
         </div>
 
-        <p class="text-[14px] md:text-[16px] leading-7 text-gray-600 max-w-[560px]">
-          All Stokvel Group Savings transactions are protected by encryption and regulated under our FSP license (FSP55736).
-        </p>
+        <p>All Stokvel Group Savings transactions are protected by encryption and regulated under our FSP license (FSP55736).</p>
 
-        <div class="flex flex-wrap items-center gap-4 mt-8">
-          <div
-            class="px-5 py-2 border
-            rounded-full bg-white text-[#FF7A00]
-            text-[13px] md:text-[14px] font-medium"
-          >
-            POPIA Compliant
-          </div>
-
-          <div
-            class="px-5 py-2 border
-            rounded-full bg-white text-[#FF7A00]
-            text-[13px] md:text-[14px] font-medium"
-          >
-            Reg No. 2025/128579/07
-          </div>
-
-          <div
-            class="px-5 py-2 border
-            rounded-full bg-white text-[#FF7A00]
-            text-[13px] md:text-[14px] font-medium"
-          >
-            Bank-Grade Encryption
-          </div>
+        <div class="tags-container">
+          <div class="tag">POPIA Compliant</div>
+          <div class="tag">Reg No. 2025/128579/07</div>
+          <div class="tag">Bank-Grade Encryption</div>
         </div>
       </div>
     </div>
   </section>
 </template>
+
+<style scoped>
+/* --- Base Styles (Mobile First) --- */
+.prefooter-section {
+  position: relative;
+  background-color: #FFF6EC;
+  margin-top: 40px;
+  width: 100%;
+  overflow: hidden;
+  min-height: 400px;
+}
+
+.content-wrapper {
+  width: 90%;
+  margin: 0 auto;
+  padding: 40px 0 240px 0; 
+}
+
+.lady-img {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  object-fit: contain;
+  z-index: 0;
+}
+
+.text-container { 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  text-align: center; 
+  z-index: 10; 
+}
+
+/* --- Tablet Range (768px - 1024px) --- */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .prefooter-section {
+    min-height: 320px;
+  }
+  
+  .content-wrapper {
+    width: 90%;
+    /* Forced 300px padding as requested */
+    padding: 60px 0 60px 300px; 
+  }
+
+  .lady-img {
+    left: 40px;
+    transform: none;
+    width: 260px;
+  }
+
+  .text-container {
+    align-items: flex-start;
+    text-align: left;
+    gap: 16px;
+  }
+
+  .tags-container { justify-content: flex-start; }
+}
+
+/* --- Desktop Range (1024px and up) --- */
+@media (min-width: 1024px) {
+  .content-wrapper {
+    width: 75%;
+    padding: 80px 0 80px 380px;
+  }
+  
+  .lady-img {
+    left: 60px;
+    transform: none;
+    width: 320px;
+  }
+}
+
+/* --- Shared Element Styles --- */
+.header-box { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.header-box i { font-size: 24px; color: #FF7A00; }
+.header-box h2 { font-size: 26px; font-weight: bold; color: #1f2937; }
+.tags-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 16px; }
+.tag { padding: 8px 20px; border: 1px solid #e5e7eb; border-radius: 9999px; background: white; color: #FF7A00; font-size: 13px; font-weight: 500; }
+</style>
