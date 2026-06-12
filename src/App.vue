@@ -4,8 +4,14 @@
 
 <style>
 @font-face {
-  font-family: 'Lato';
+  font-family: 'LatoReg';
   src: url('/src/assets/fonts/Lato-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'LatoBold';
+  src: url('/src/assets/fonts/Lato-Bold.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
