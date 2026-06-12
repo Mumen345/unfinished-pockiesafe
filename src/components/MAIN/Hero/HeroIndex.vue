@@ -348,7 +348,7 @@ p {
       gap: 20px;
       width: 100%;
       border-radius: 0;
-      margin: 80px 0 30px;
+      margin: 72px 0 30px;
     }
 
     .left_container {
