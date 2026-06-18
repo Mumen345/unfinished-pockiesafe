@@ -1,26 +1,22 @@
 <template>
-  <div class="mt-[100px]">
-    <div class="hero-container" :style="{ backgroundImage: `url(${bgFrame})` }">
-      <div class="text-content">
-        <h1 class="hero-title">
-          <p>FlexRand Savings at Your Own Pace</p>
-        </h1>
-        <p class="hero-description">
-          Enjoy full control over your money. Deposit anytime, withdraw anytime, and grow without penalties.
-        </p>
-
-        <div class="button-group">
-          <button class="btn btn-primary">Start Saving</button>
-          <button class="btn btn-secondary">View How it Works</button>
-        </div>
-
-        <div class="avatar-chain">
-          <img src="@/assets/users-chunks.png" class="users-img" alt="Users" />
-        </div>
+  <div class="hero-container" :style="{ backgroundImage: `url(${bgFrame})` }">
+    <div class="text-content">
+      <h1 class="hero-title">
+        <p>FlexRand Savings at your own pace.</p>
+      </h1>
+      <p class="hero-description">
+        Enjoy full control over your money. Deposit anytime, withdraw anytime, and grow without penalties
+      </p>
+      <div class="button-group">
+        <button class="btn btn-primary">View how it works</button>
+        <button class="btn btn-secondary">Start Saving</button>
       </div>
-      <div class="image-container">
-        <img src="@/assets/phone-in-hand-3.png" class="phone-img" alt="PockieSafe App on Phone" />
+      <div class="avatar-chain">
+        <img src="../../../assets/users-chunks.png" />
       </div>
+    </div>
+    <div class="image-container">
+      <img src="@/assets/phone-in-hand-3.png" class="phone-img" alt="PockieSafe App on Phone" />
     </div>
   </div>
 </template>
@@ -32,11 +28,10 @@ import bgFrame from '@/assets/bg-frame-3.png'
 <style scoped>
 .hero-container {
   width: 95%;
-  margin: 0 auto 48px auto;
+  margin: 100px auto 48px auto; 
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   padding: 40px 5% 0 5%;
   box-sizing: border-box;
   text-align: center;
@@ -53,13 +48,12 @@ import bgFrame from '@/assets/bg-frame-3.png'
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   color: white;
   z-index: 1;
 }
 
-.hero-title { font-size: 40px; font-weight: bold; line-height: 1.1; margin: 0; }
-.hero-description { width: 80%; font-size: 14px; margin-top: 16px; color: #e5e5e5; }
+.hero-title { font-size: 49px; font-weight: bold; margin: 0; line-height: 1.1; }
+.hero-description { width: 80%; font-size: clamp(0.75rem, 2vw, 1rem); margin-top: 16px; }
 
 .button-group { 
   display: flex; 
@@ -67,7 +61,6 @@ import bgFrame from '@/assets/bg-frame-3.png'
   gap: 12px; 
   margin-top: 24px; 
   width: 100%;
-  align-items: center;
 }
 
 .btn { 
@@ -78,7 +71,6 @@ import bgFrame from '@/assets/bg-frame-3.png'
   transition: all 0.3s ease;
   font-weight: 600;
   width: 100%;
-  max-width: 250px;
 }
 
 .btn-primary { background-color: white; color: black; }
@@ -86,57 +78,65 @@ import bgFrame from '@/assets/bg-frame-3.png'
 .btn-secondary { background-color: transparent; border-color: white; color: white; }
 .btn-secondary:hover { background-color: white; color: black; }
 
-.avatar-chain { margin-top: 24px; display: flex; justify-content: center; }
-.users-img { width: 180px; height: auto; }
+.avatar-chain { display: flex; align-items: center; margin-top: 24px; width: 40%; left: 50% }
+.avatar { width: 50%; height: 38px; border-radius: 50%; margin-left: -5px; }
+
+.numbers-stack { display: flex; align-items: center; margin-top: 24px; }
+.number-large { font-size: 2.5rem; margin: 0 10px; }
+.number-plus { font-size: 2.5rem; color: #4ade80; }
+.number-label { font-size: 1rem; text-align: left; margin-left: 10px; }
 
 .image-container {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-end; 
-  margin-top: auto; 
-  padding-top: 50px;
+  margin-top: auto;      
+  padding-top: 40px;
 }
 
-.phone-img { 
-  width: 80%; 
-  max-width: 300px; 
-  height: auto; 
-  display: block; 
-}
+.phone-img { width: 80%; max-width: 350px; height: auto; display: block; }
 
 @media (min-width: 600px) {
   .button-group {
     flex-direction: row;
     justify-content: center;
+    width: auto;
   }
   .btn {
     width: auto;
-    padding: 12px 32px;
+    border-radius: 15px;
   }
 }
 
 @media (min-width: 1024px) {
   .hero-container {
     flex-direction: row;
-    align-items: flex-end;
-    padding: 80px 5% 0 5%;
+    justify-content: space-between;
+    align-items: flex-end; 
+    padding: 60px 100px 0 100px;
+    text-align: left;
+    overflow: hidden;
   }
 
   .text-content {
-    width: 50%;
-    align-items: center;
-    padding-bottom: 80px;
+    align-items: flex-start;
+    width: 45%;
+    padding-bottom: 60px;
   }
+
+  .button-group { justify-content: flex-start; }
   
   .image-container {
     width: 50%;
-    margin-top: 0;
+    justify-content: flex-end;
+    align-self: flex-end;
     padding-top: 0;
   }
 
   .phone-img {
-    max-width: 400px;
+    width: 100%;
+    max-width: 480px;
   }
 }
 </style>
