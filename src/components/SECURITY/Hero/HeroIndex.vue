@@ -1,23 +1,22 @@
 <template>
   <div class="mt-[100px]">
-      <div class="hero-container" :style="{ backgroundImage: `url(${bgFrame})` }">
-        <div class="text-content">
-      <h1 class="hero-title">
-        <p>Your Savings & Data Are Always Protected</p>
-      </h1>
-      <p class="hero-description">
-        Your funds, identity, and transactions are protected with advanced encryption and regulated under our FSP license.
-      </p>
-
-      <div class="button-group">
-        <button class="btn btn-primary">View License Info</button>
-        <button class="btn btn-secondary">Learn about POPIA</button>
+    <div class="hero-container" :style="{ backgroundImage: `url(${bgFrame})` }">
+      <div class="text-content">
+        <h1 class="hero-title">
+          <p>Your Savings & Data Are Always Protected</p>
+        </h1>
+        <p class="hero-description">
+          Your funds, identity, and transactions are protected with advanced encryption and regulated under our FSP license.
+        </p>
+        <div class="button-group">
+          <button class="btn btn-primary">View License Info</button>
+          <button class="btn btn-secondary">Learn about POPIA</button>
+        </div>
+      </div>
+      <div class="image-container">
+        <img src="@/assets/phone-in-hand-4.png" class="phone-img" alt="PockieSafe App on Phone" />
       </div>
     </div>
-    <div class="image-container">
-          <img src="@/assets/phone-in-hand-4.png" class="phone-img" alt="PockieSafe App on Phone" />
-        </div>
-</div>
   </div>
 </template>
 
@@ -27,7 +26,7 @@ import bgFrame from '@/assets/bg-frame-4.png'
 
 <style scoped>
 .hero-container {
-  width: 100%;
+  width: 95%;
   max-width: 1800px;
   min-height: 500px;
   margin: 96px auto;
@@ -47,10 +46,12 @@ import bgFrame from '@/assets/bg-frame-4.png'
 .text-content {
   display: flex;
   flex-direction: column;
+  align-items: center;
   max-width: 350px;
   color: white;
   margin-top: 96px;
   margin-bottom: 48px;
+  text-align: center;
 }
 
 .hero-title {
@@ -118,73 +119,6 @@ import bgFrame from '@/assets/bg-frame-4.png'
   color: black;
 }
 
-/* --- Avatars --- */
-.avatar-chain {
-  display: flex;
-  align-items: center;
-  margin-top: 32px;
-}
-
-.avatar {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background-color: white;
-  object-fit: cover;
-  margin-left: -5px;
-}
-
-.avatar:first-child {
-  margin-left: 0;
-}
-
-/* --- Numbers --- */
-.numbers-stack {
-  display: flex;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.arrow-icon {
-  width: 16px;
-  height: 16px;
-}
-
-.number-large {
-  font-size: 40px;
-  font-weight: bold;
-  line-height: 1;
-  color: white;
-  margin: 0 20px;
-}
-
-.number-plus {
-  font-size: 40px;
-  font-weight: bold;
-  line-height: 1;
-  color: #4ade80;
-}
-
-.number-label {
-  font-size: 15px;
-  font-weight: bold;
-  line-height: 1.2;
-  color: white;
-  margin-left: 20px;
-}
-
-/* --- Trust Badge --- */
-.trust-badge {
-  margin-top: 20px;
-  text-align: left;
-}
-
-.trust-badge p {
-  font-size: 12px;
-  color: white;
-  margin: 0;
-}
-
 /* --- Image Container --- */
 .image-container {
   display: flex;
@@ -199,19 +133,27 @@ import bgFrame from '@/assets/bg-frame-4.png'
   object-fit: contain;
 }
 
+/* --- Tablet --- */
+@media (min-width: 600px) and (max-width: 1023px) {
+  .button-group {
+    flex-direction: row;
+    justify-content: center;
+    width: auto;
+  }
 
-/* =========================================
-   RESPONSIVE UPGRADES (TABLET & DESKTOP)
-========================================= */
+  .btn {
+    width: auto;
+  }
+}
 
-/* Small Tablets / Large Phones */
+/* --- Small Tablets / Large Phones --- */
 @media (min-width: 640px) {
   .phone-img {
     max-width: 400px;
   }
 }
 
-/* Desktop Breakpoint (lg) */
+/* --- Desktop --- */
 @media (min-width: 1024px) {
   .hero-container {
     flex-direction: row;
@@ -221,11 +163,15 @@ import bgFrame from '@/assets/bg-frame-4.png'
   }
 
   .text-content {
+    align-items: flex-start;
+    text-align: left;
     margin-top: 0;
   }
 
   .button-group {
+    display: flex;
     flex-direction: row;
+    justify-content: flex-start;
     gap: 20px;
     width: auto;
   }

@@ -5,7 +5,7 @@
         <p>Stokvel Group Savings Made Simple</p>
       </h1>
       <p class="hero-description">
-       Join or create a Stokvel that fits your goals. Enjoy Transperancy, accountability,and growth through collective saving
+        Join or create a Stokvel that fits your goals. Enjoy Transperancy, accountability, and growth through collective saving
       </p>
       <div class="button-group">
         <button class="btn btn-primary">View how it works</button>
@@ -28,7 +28,7 @@ import bgFrame from '@/assets/bg-frame-2.png'
 <style scoped>
 .hero-container {
   width: 95%;
-  margin: 100px auto 48px auto; 
+  margin: 100px auto 48px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,19 +55,19 @@ import bgFrame from '@/assets/bg-frame-2.png'
 .hero-title { font-size: 49px; font-weight: bold; margin: 0; line-height: 1.1; }
 .hero-description { width: 80%; font-size: clamp(0.75rem, 2vw, 1rem); margin-top: 16px; }
 
-.button-group { 
-  display: flex; 
-  flex-direction: column; 
-  gap: 12px; 
-  margin-top: 24px; 
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
   width: 100%;
 }
 
-.btn { 
-  padding: 14px 24px; 
-  border-radius: 25px; 
-  border: 1px solid transparent; 
-  cursor: pointer; 
+.btn {
+  padding: 14px 24px;
+  border-radius: 25px;
+  border: 1px solid transparent;
+  cursor: pointer;
   transition: all 0.3s ease;
   font-weight: 600;
   width: 100%;
@@ -78,26 +78,31 @@ import bgFrame from '@/assets/bg-frame-2.png'
 .btn-secondary { background-color: transparent; border-color: white; color: white; }
 .btn-secondary:hover { background-color: white; color: black; }
 
-.avatar-chain { display: flex; align-items: center; margin-top: 24px; width: 40%; left: 50% }
-.avatar { width: 50%; height: 38px; border-radius: 50%; margin-left: -5px; }
+.avatar-chain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+  width: 100%;
+}
 
-.numbers-stack { display: flex; align-items: center; margin-top: 24px; }
-.number-large { font-size: 2.5rem; margin: 0 10px; }
-.number-plus { font-size: 2.5rem; color: #4ade80; }
-.number-label { font-size: 1rem; text-align: left; margin-left: 10px; }
+.avatar-chain img {
+  width: 50%;
+  display: block;
+}
 
 .image-container {
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: flex-end; 
-  margin-top: auto;      
+  align-items: flex-end;
+  margin-top: auto;
   padding-top: 40px;
 }
 
 .phone-img { width: 80%; max-width: 350px; height: auto; display: block; }
 
-@media (min-width: 600px) {
+@media (min-width: 600px) and (max-width: 1023px) {
   .button-group {
     flex-direction: row;
     justify-content: center;
@@ -107,13 +112,16 @@ import bgFrame from '@/assets/bg-frame-2.png'
     width: auto;
     border-radius: 15px;
   }
+  .avatar-chain img {
+    width: 31%;
+  }
 }
 
 @media (min-width: 1024px) {
   .hero-container {
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-end; 
+    align-items: flex-end;
     padding: 60px 100px 0 100px;
     text-align: left;
     overflow: hidden;
@@ -125,8 +133,26 @@ import bgFrame from '@/assets/bg-frame-2.png'
     padding-bottom: 60px;
   }
 
-  .button-group { justify-content: flex-start; }
-  
+  .button-group {
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  .btn {
+    width: auto;
+    border-radius: 15px;
+  }
+
+  .avatar-chain {
+    justify-content: flex-start;
+  }
+
+  .avatar-chain img {
+    width: 50%;
+  }
+
   .image-container {
     width: 50%;
     justify-content: flex-end;
