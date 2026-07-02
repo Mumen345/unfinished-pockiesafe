@@ -92,7 +92,7 @@
           </p>
 
           <RouterLink
-            to="/"
+            to="/faqs"
             class="text-gray-400 hover:text-white transition text-[14px]"
           >
             FAQs
@@ -118,14 +118,14 @@
           </p>
 
           <RouterLink
-            to="/"
+            to="/terms"
             class="text-gray-400 hover:text-white transition text-[14px]"
           >
             Terms & Conditions
           </RouterLink>
 
           <RouterLink
-            to="/"
+            to="/privacy"
             class="text-gray-400 hover:text-white transition text-[14px]"
           >
             Privacy Policy
@@ -144,12 +144,14 @@
     Johannesburg, South Africa
   </p>
 
+<RouterLink to="/contact">
   <button
     class="p-1 mt-1 bg-white text-black rounded-[5px]
     w-[150px] font-medium hover:border hover:bg-transparent hover:text-white transition text-[15px] font-bold"
   >
     Contact Support
   </button>
+</RouterLink>
 </div>
       </div>
     </div>

@@ -2,7 +2,7 @@
   <!-- Navbar -->
   <nav
     id="navbar"
-    class="fixed top-0 z-50 w-full bg-white border-b border-gray-100"
+    class="fixed top-0 z-50 w-full bg-white border-b border-gray-100 mb-[100px]"
   >
     <!-- Inner Container -->
     <div
@@ -44,7 +44,7 @@
         </router-link>
 
         <router-link
-          to="/contact"
+          to="/faqs"
           class="font-medium text-gray-700 transition hover:text-gray-900"
           active-class="underline decoration-2 underline-offset-[6px]"
         >
@@ -136,7 +136,7 @@
           </router-link>
 
           <router-link
-            to="/"
+            to="/faqs"
             class="font-medium text-gray-700"
             active-class="underline decoration-2 underline-offset-[6px]"
             @click="mobileMenu = false"
