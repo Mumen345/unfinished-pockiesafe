@@ -1,6 +1,5 @@
 <template>
   <div class="policy-wrapper">
-    <!-- TABLE OF CONTENT -->
     <aside class="toc">
       <p class="toc-title">Table Of Content</p>
 
@@ -15,11 +14,10 @@
       </button>
     </aside>
 
-    <!-- CONTENT -->
     <main class="policy-content">
       <section v-if="activeSection === 'introduction'">
         <h2>Introduction</h2>
-        <p>PockieSafe Values your privacy. This Policy outlines how we collect, use, and safegaurd your information across our website and mobile app</p>
+        <p>PockieSafe values your privacy. This policy outlines how we collect, use, and safeguard your information across our website and mobile app.</p>
       </section>
 
       <section v-if="activeSection === 'information'">
@@ -96,7 +94,6 @@ const sections = [
   margin: 4rem 0;
 }
 
-/* TOC BOX */
 .toc {
   width: 260px;
   margin-left: 10%;
@@ -106,7 +103,6 @@ const sections = [
   background: #fff;
 }
 
-/* Title */
 .toc-title {
   font-size: 13px;
   font-weight: 600;
@@ -114,12 +110,11 @@ const sections = [
   padding: 0 1.5rem 0.75rem;
 }
 
-/* Links */
 .toc-link {
   position: relative;
   display: block;
   width: 100%;
-  padding: 0.6rem 1.5rem 0.6rem 2.5rem; /* space for indicator */
+  padding: 0.6rem 1.5rem 0.6rem 2.5rem;
   text-align: left;
   font-size: 14px;
   color: #374151;
@@ -128,24 +123,21 @@ const sections = [
   cursor: pointer;
 }
 
-/* Active text */
 .toc-link.active {
   color: #2563eb;
 }
 
-/* INSIDE curved indicator */
 .toc-link.active::before {
   content: '';
   position: absolute;
-  left: 1.25rem;       /* INSIDE */
+  left: 1.25rem;
   top: 8px;
   bottom: 8px;
   width: 4px;
   background: #2563eb;
-  border-radius: 999px; /* curved top & bottom */
+  border-radius: 999px;
 }
 
-/* CONTENT */
 .policy-content {
   max-width: 640px;
 }
@@ -159,6 +151,35 @@ const sections = [
 .policy-content p {
   font-size: 15px;
   color: #4b5563;
-  text-align: center
+}
+
+@media (max-width: 768px) {
+  .policy-wrapper {
+    flex-direction: column;
+    gap: 2rem;
+    margin: 2rem 1rem;
+  }
+
+  .toc {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .toc-link {
+    padding: 0.75rem 1rem 0.75rem 2rem;
+    font-size: 15px;
+  }
+
+  .toc-link.active::before {
+    left: 0.75rem;
+  }
+
+  .policy-content {
+    max-width: 100%;
+  }
+
+  .policy-content h2 {
+    text-align: center;
+  }
 }
 </style>
