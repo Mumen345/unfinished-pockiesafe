@@ -28,18 +28,18 @@ import bgFrame from '@/assets/bg-frame-4.png'
 .hero-container {
   width: 95%;
   max-width: 1800px;
-  min-height: 500px;
-  margin: 96px auto;
+  min-height: 460px;
+  margin: 48px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 40px;
+  gap: 32px;
   border-radius: 10px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 48px 20px 0;
+  padding: 20px 20px;
   box-sizing: border-box;
 }
 
@@ -49,8 +49,8 @@ import bgFrame from '@/assets/bg-frame-4.png'
   align-items: center;
   max-width: 350px;
   color: white;
-  margin-top: 96px;
-  margin-bottom: 48px;
+  margin-top: 32px;
+  margin-bottom: 32px;
   text-align: center;
 }
 
@@ -58,7 +58,7 @@ import bgFrame from '@/assets/bg-frame-4.png'
   font-size: 45px;
   font-weight: bold;
   line-height: 1.1;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .hero-title p {
@@ -67,28 +67,23 @@ import bgFrame from '@/assets/bg-frame-4.png'
 
 .hero-description {
   font-size: 12px;
-  margin-top: 8px;
+  margin-top: 6px;
   color: white;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 }
 
-/* --- Buttons --- */
 .button-group {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-top: 20px;
+  margin-top: 16px;
   width: 100%;
-  margin-bottom: 5px;
 }
 
 .btn {
-  width: 100%;
+  width: 100px;
   border-radius: 120px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 10px 20px;
   font-size: 15px;
   font-weight: 500;
   cursor: pointer;
@@ -119,7 +114,6 @@ import bgFrame from '@/assets/bg-frame-4.png'
   color: black;
 }
 
-/* --- Image Container --- */
 .image-container {
   display: flex;
   justify-content: center;
@@ -133,7 +127,6 @@ import bgFrame from '@/assets/bg-frame-4.png'
   object-fit: contain;
 }
 
-/* --- Tablet --- */
 @media (min-width: 600px) and (max-width: 1023px) {
   .button-group {
     flex-direction: row;
@@ -146,30 +139,27 @@ import bgFrame from '@/assets/bg-frame-4.png'
   }
 }
 
-/* --- Small Tablets / Large Phones --- */
 @media (min-width: 640px) {
   .phone-img {
     max-width: 400px;
   }
 }
 
-/* --- Desktop --- */
 @media (min-width: 1024px) {
   .hero-container {
     flex-direction: row;
     gap: 15%;
-    padding-left: 48px;
-    padding-right: 48px;
+    padding: 20px 48px;
   }
 
   .text-content {
     align-items: flex-start;
     text-align: left;
     margin-top: 0;
+    margin-bottom: 0;
   }
 
   .button-group {
-    display: flex;
     flex-direction: row;
     justify-content: flex-start;
     gap: 20px;

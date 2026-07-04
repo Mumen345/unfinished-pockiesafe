@@ -17,7 +17,7 @@ const cards = [
     title: 'POPIA Compliant',
     description: 'We Adhere to South Africa’s POPIA data privacy and protection framework.',
     color: '#4285F4'
-  },
+  }
 ]
 </script>
 
@@ -33,17 +33,14 @@ const cards = [
           class="icon-container"
           :style="{ backgroundColor: card.color }"
         >
-          <i
-            :class="card.icon"
-            class="text-white text-5xl"
-          ></i>
+          <i :class="card.icon" class="icon"></i>
         </div>
 
-        <h2 class="text-4xl font-bold text-black mt-10">
+        <h2 class="title">
           {{ card.title }}
         </h2>
 
-        <p class="text-lg text-gray-500 mt-6 leading-8">
+        <p class="description">
           {{ card.description }}
         </p>
       </div>
@@ -54,32 +51,28 @@ const cards = [
 <style scoped>
 .cards-section {
   width: 100%;
-  padding: 0 80px;
+  padding: 0 40px;
   margin-bottom: 100px;
   box-sizing: border-box;
 }
 
 .cards-container {
   display: flex;
-  justify-content: center;
-  gap: 60px;
   flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
 }
 
 .card {
-  width: 480px;
-  min-height: 450px;
-
+  width: 360px;
+  min-height: 440px;
   background: #f7f7f7;
   border-radius: 40px;
-
   padding: 60px;
   box-sizing: border-box;
-
   display: flex;
   flex-direction: column;
-
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .card:hover {
@@ -89,26 +82,41 @@ const cards = [
 .icon-container {
   width: 110px;
   height: 110px;
-
   border-radius: 50%;
-
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Tablet */
+.icon {
+  color: white;
+  font-size: 48px;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: 700;
+  color: #000;
+  margin-top: 40px;
+}
+
+.description {
+  font-size: 18px;
+  color: #6b7280;
+  margin-top: 24px;
+  line-height: 1.8;
+}
+
 @media (max-width: 1200px) {
   .cards-section {
-    padding: 0 40px;
+    padding: 0 24px;
   }
 
   .card {
-    width: 420px;
+    width: 340px;
   }
 }
 
-/* Mobile */
 @media (max-width: 768px) {
   .cards-section {
     padding: 0 20px;
@@ -127,6 +135,10 @@ const cards = [
   .icon-container {
     width: 90px;
     height: 90px;
+  }
+
+  .title {
+    font-size: 32px;
   }
 }
 </style>
