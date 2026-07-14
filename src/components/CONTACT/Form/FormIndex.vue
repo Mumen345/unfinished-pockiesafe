@@ -1,4 +1,5 @@
 <template>
+  <!-- NAVBAR -->
   <nav class="fixed top-0 left-0 z-50 w-full bg-white border-b border-gray-100">
     <div
       class="mx-auto w-full max-w-[1400px] px-4 md:px-6 lg:px-10 2xl:px-20 py-4 flex items-center justify-between"
@@ -22,7 +23,7 @@
   <main class="mt-24 pb-24 px-4 md:px-6 lg:px-10 2xl:px-20 max-w-[1400px] mx-auto">
     <div class="contact-grid">
 
-      <!-- MAP COLUMN -->
+      <!-- MAP SIDE -->
       <div class="map-side">
         <iframe
           class="map-frame"
@@ -34,19 +35,21 @@
           <i class="fa-solid fa-location-dot"></i>
           <h2>Our Office</h2>
           <p>
-            Pockie Technologies Global (PTY) Ltd, Regus Offices, Sandton,
-            Johannesburg, South Africa
+            Pockie Technologies Global (PTY) Ltd, Regus Offices,
+            Sandton, Johannesburg, South Africa
           </p>
         </div>
       </div>
 
-      <!-- FORM COLUMN -->
+      <!-- FORM SIDE -->
       <div class="form-side">
+
         <div class="form-row">
           <div>
             <label>First Name</label>
             <input type="text" placeholder="Enter First Name" />
           </div>
+
           <div>
             <label>Last Name</label>
             <input type="text" placeholder="Enter Last Name" />
@@ -62,10 +65,10 @@
           <div>
             <label>Phone Number</label>
             <div class="phone-container">
-              <select>
-                <option>IN</option>
-                <option>NG</option>
-              </select>
+              <vue-country-code
+                @onSelect="onSelect"
+                :preferredCountries="['vn', 'us', 'gb']"
+              />
               <input type="tel" placeholder="Enter Phone Number" />
             </div>
           </div>
@@ -76,15 +79,37 @@
           <textarea placeholder="Enter your Message"></textarea>
         </div>
 
-
         <button class="send-btn">Send</button>
       </div>
+
     </div>
   </main>
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue'
 import logo from '@/assets/logo.png'
+
+const countries = ref([])
+const selectedCountry = ref('ZA')
+
+const onSelect = ({ name, iso2, dialCode }) => {
+  console.log(name, iso2, dialCode)
+}
+
+onMounted(async () => {
+  try {
+    const res = await fetch(
+      'https://restcountries.com/v3.1/all?fields=name,cca2'
+    )
+    const data = await res.json()
+    countries.value = data.sort((a, b) =>
+      a.name.common.localeCompare(b.name.common)
+    )
+  } catch (err) {
+    console.error('Error fetching countries:', err)
+  }
+})
 </script>
 
 <style scoped>
@@ -92,7 +117,6 @@ import logo from '@/assets/logo.png'
   overflow-y: scroll;
 }
 
-/* GRID */
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -100,7 +124,6 @@ import logo from '@/assets/logo.png'
   padding: 40px 0;
 }
 
-/* MAP */
 .map-side {
   display: flex;
   flex-direction: column;
@@ -120,18 +143,17 @@ import logo from '@/assets/logo.png'
   border-radius: 10px;
   text-align: center;
 }
-
+ 
 .map-info-box i {
   font-size: 28px;
   color: #60a5fa;
 }
 
-.map-info-box h2 {
+.map-info-box h2 { 
   margin: 8px 0;
   font-size: 24px;
-}
+} 
 
-/* FORM */
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -146,8 +168,7 @@ label {
 }
 
 input,
-textarea,
-select {
+textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid #ddd;
@@ -168,32 +189,6 @@ textarea {
   gap: 10px;
 }
 
-.phone-container select {
-  width: 80px;
-}
-
-/* CHECKBOX — FINAL */
-.checkbox-wrapper {
-  margin-bottom: 20px;
-}
-
-.checkbox-label {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  cursor: pointer;
-}
-
-.checkbox-label input {
-  margin-top: 3px;
-}
-
-.checkbox-label span {
-  font-size: 14px;
-  line-height: 1.3;
-}
-
-/* BUTTON */
 .send-btn {
   width: 100%;
   padding: 15px;
@@ -205,11 +200,9 @@ textarea {
   cursor: pointer;
 }
 
-/* MOBILE */
 @media (max-width: 900px) {
   .contact-grid {
     grid-template-columns: 1fr;
-    gap: 24px;
   }
 
   .form-row {
@@ -221,7 +214,6 @@ textarea {
   }
 }
 
-/* VERY LARGE */
 @media (min-width: 1600px) {
   .contact-grid {
     gap: 60px;

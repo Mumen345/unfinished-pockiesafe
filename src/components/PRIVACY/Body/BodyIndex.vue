@@ -71,7 +71,7 @@
 <script setup>
 import { ref } from 'vue'
 
-const activeSection = ref('information')
+const activeSection = ref('introduction')
 
 const sections = [
   { id: 'introduction', label: 'Introduction' },

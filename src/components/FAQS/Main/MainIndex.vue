@@ -14,29 +14,38 @@
     </div>
 
     <div class="content-wrapper">
-      <div
-        v-for="(item, index) in contentItems"
-        :key="index"
-        class="content-box"
-      >
-        <div class="box-header" @click="toggleAccordion(index)">
-          <h3>{{ item.title }}</h3>
-          <span class="arrow" :class="{ open: item.isOpen }">▼</span>
-        </div>
+      <div v-if="activeTab === 'General'">
+        <div
+          v-for="(item, index) in contentItems"
+          :key="index"
+          class="content-box"
+        >
+          <div class="box-header" @click="toggleAccordion(index)">
+            <h3>{{ item.title }}</h3>
+            <span class="arrow" :class="{ open: item.isOpen }">▼</span>
+          </div>
 
-        <div v-if="item.isOpen" class="box-content">
-          <hr />
-          <p v-for="(text, pIndex) in item.paragraphs" :key="pIndex">
-            {{ text }}
-          </p>
+          <div v-if="item.isOpen" class="box-content">
+            <hr />
+            <p v-for="(text, pIndex) in item.paragraphs" :key="pIndex">
+              {{ text }}
+            </p>
+          </div>
         </div>
       </div>
+
+      <component v-else :is="currentComponent" />
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+
+import Stokvel from './Stokvel/TabIndex.vue'
+import Flexrand from './Flexrand/TabIndex.vue'
+import Security from './Security/TabIndex.vue'
+import AppSupport from './AppSupport/TabIndex.vue'
 
 const tabs = ['General', 'Stokvel', 'Flexrand', 'Security', 'App Support']
 const activeTab = ref('General')
@@ -102,8 +111,25 @@ const contentItems = ref([
 ])
 
 const toggleAccordion = (index) => {
-  contentItems.value[index].isOpen = !contentItems.value[index].isOpen
+  const isCurrentlyOpen = contentItems.value[index].isOpen
+  
+  contentItems.value.forEach((item) => {
+    item.isOpen = false
+  })
+  
+  if (!isCurrentlyOpen) {
+    contentItems.value[index].isOpen = true
+  }
 }
+
+const tabComponents = {
+  Stokvel,
+  Flexrand,
+  Security,
+  'App Support': AppSupport
+}
+
+const currentComponent = computed(() => tabComponents[activeTab.value])
 </script>
 
 <style scoped>
@@ -136,6 +162,7 @@ const toggleAccordion = (index) => {
   background: transparent;
   font-size: 12px;
   cursor: pointer;
+  transition: background 0.2s;
 }
 
 .tab-button.active {

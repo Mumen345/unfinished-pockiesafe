@@ -78,10 +78,12 @@ import bgFrame from '@/assets/bg-frame-4.png'
   gap: 12px;
   margin-top: 16px;
   width: 100%;
+  align-items: center;
 }
 
 .btn {
-  width: 100px;
+  width: max-content;
+  white-space: nowrap;
   border-radius: 120px;
   padding: 10px 20px;
   font-size: 15px;
@@ -131,11 +133,6 @@ import bgFrame from '@/assets/bg-frame-4.png'
   .button-group {
     flex-direction: row;
     justify-content: center;
-    width: auto;
-  }
-
-  .btn {
-    width: auto;
   }
 }
 
@@ -163,11 +160,6 @@ import bgFrame from '@/assets/bg-frame-4.png'
     flex-direction: row;
     justify-content: flex-start;
     gap: 20px;
-    width: auto;
-  }
-
-  .btn {
-    width: auto;
   }
 
   .image-container {
