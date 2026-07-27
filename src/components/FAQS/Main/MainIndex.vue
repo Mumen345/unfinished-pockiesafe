@@ -14,7 +14,7 @@
     </div>
 
     <div class="content-wrapper">
-      <div v-if="activeTab === 'General'">
+      <div v-if="activeTab === 'General'" class="accordion-columns">
         <div
           v-for="(item, index) in contentItems"
           :key="index"
@@ -171,26 +171,31 @@ const currentComponent = computed(() => tabComponents[activeTab.value])
 }
 
 .content-wrapper {
-  column-count: 1;
-  column-gap: 2rem;
   width: 100%;
   max-width: 1400px;
   padding: 2rem;
 }
 
-@media (min-width: 1236px) {
-  .content-wrapper {
-    column-count: 2;
-  }
+.accordion-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
 }
 
 .content-box {
-  break-inside: avoid;
   background: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 16px;
   padding: 1.5rem;
-  margin-bottom: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1236px) {
+  .content-box {
+    width: calc(50% - 1rem);
+  }
 }
 
 .box-header {

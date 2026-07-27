@@ -1,97 +1,97 @@
 <template>
-  <div class="mt-[100px]">
-    <div class="hero-container" :style="{ backgroundImage: `url(${bgFrame})` }">
-      <div class="text-content">
-        <h1 class="hero-title">
-          <p>Your Savings & Data Are Always Protected</p>
-        </h1>
-        <p class="hero-description">
-          Your funds, identity, and transactions are protected with advanced encryption and regulated under our FSP license.
-        </p>
-        <div class="button-group">
-          <button class="btn btn-primary">View License Info</button>
-          <button class="btn btn-secondary">Learn about POPIA</button>
-        </div>
+  <div class="hero_container mt-5">
+    <div class="left_container">
+      <div>
+        <h1>Your Savings & Data are <span class="break-text">always protected</span></h1>
+        <p>Enjoy full control over your money. Deposit anytime, withdraw anytime and grow without penalties.</p>
       </div>
-      <div class="image-container">
-        <img src="@/assets/phone-in-hand-4.png" class="phone-img" alt="PockieSafe App on Phone" />
+      <div class="button-group">
+        <button class="btn btn-primary">View License Info</button>
+        <button class="btn btn-secondary">Learn about POPIA</button>
       </div>
+    </div>
+    <div class="image_container">
+      <img src="../../../assets/phone-in-hand-4.png" class="phone-img" alt="PockieSafe App on Phone" />
     </div>
   </div>
 </template>
-
 <script setup>
-import bgFrame from '@/assets/bg-frame-4.png'
-</script>
 
+</script>
 <style scoped>
-.hero-container {
+.hero_container {
+  background-image: url("../../../assets/bg-frame-4.png");
+  background-color: #cccccc;
+  height: 750px;
   width: 95%;
-  max-width: 1800px;
-  min-height: 460px;
-  margin: 48px auto;
+  margin: 100px auto 30px;
+  border-radius: 42px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 32px;
-  border-radius: 10px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 20px 20px;
-  box-sizing: border-box;
+  color: #FFFFFF;
+  gap: 100px;
+  overflow: hidden;
 }
 
-.text-content {
+.left_container {
+  width: 440px;
+}
+
+.image_container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 350px;
-  color: white;
-  margin-top: 32px;
-  margin-bottom: 32px;
-  text-align: center;
+  align-items: flex-end;
+  justify-content: center;
+  height: 100%;
 }
 
-.hero-title {
-  font-size: 45px;
-  font-weight: bold;
-  line-height: 1.1;
-  margin-bottom: 12px;
+.phone-img {
+  max-height: calc(100% - 10px);
+  height: calc(100% - 10px);
+  object-fit: contain;
+  object-position: bottom;
+  transform: translateY(10px);
 }
 
-.hero-title p {
-  margin: 0;
+h1 {
+  font-size: 56px;
+  line-height: 64px;
+  font-family: LatoBold;
+  font-weight: 600; /* Reduced font weight slightly */
+  margin-bottom: 20px;
 }
 
-.hero-description {
-  font-size: 12px;
-  margin-top: 6px;
-  color: white;
-  margin-bottom: 4px;
+.break-text {
+  display: block;
+}
+
+p {
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 300 !important; /* Reduced paragraph text weight slightly */
+  font-family: LatoReg;
+  color: #EBEBFF;
+}
+
+.gaps {
+  gap: 30px;
 }
 
 .button-group {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 12px;
-  margin-top: 16px;
+  margin-top: 24px;
   width: 100%;
-  align-items: center;
 }
 
 .btn {
-  width: max-content;
-  white-space: nowrap;
-  border-radius: 120px;
-  padding: 10px 20px;
-  font-size: 15px;
-  font-weight: 500;
+  padding: 14px 24px;
+  border-radius: 25px;
+  border: 1px solid transparent;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-sizing: border-box;
-  border: 1px solid transparent;
+  width: 100%;
 }
 
 .btn-primary {
@@ -116,58 +116,106 @@ import bgFrame from '@/assets/bg-frame-4.png'
   color: black;
 }
 
-.image-container {
+.avatar-chain {
   display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  width: 100%;
+  align-items: center;
+  margin-top: 24px;
 }
 
-.phone-img {
-  width: 100%;
-  max-width: 300px;
-  object-fit: contain;
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  margin-left: -5px;
 }
 
-@media (min-width: 600px) and (max-width: 1023px) {
-  .button-group {
-    flex-direction: row;
-    justify-content: center;
+.numbers-stack {
+  display: flex;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.number-large {
+  font-size: 2.5rem;
+  margin: 0 10px;
+}
+
+.number-plus {
+  font-size: 2.5rem;
+  color: #4ade80;
+}
+
+.number-label {
+  font-size: 1rem;
+  text-align: left;
+  margin-left: 10px;
+}
+
+@media (max-width: 1260px) {
+  .hero_container {
+    width: 97%;
   }
 }
 
-@media (min-width: 640px) {
-  .phone-img {
-    max-width: 400px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .hero-container {
-    flex-direction: row;
-    gap: 15%;
-    padding: 20px 48px;
-  }
-
-  .text-content {
-    align-items: flex-start;
-    text-align: left;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
-  .button-group {
-    flex-direction: row;
-    justify-content: flex-start;
+@media (max-width: 1260px) {
+  .hero_container {
+    padding-top: 30px;
+    height: auto;
+    flex-direction: column;
     gap: 20px;
+    width: 890px;
+  }
+  
+  @media (max-width: 1100px) {
+    .left_container {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      width: 70%;
+      align-items: center;
+      justify-content: center;
+    }
+    
+  }
+  
+  @media (max-width: 900px) {
+    .hero_container {
+      height: auto;
+      flex-direction: column;
+      padding-top: 50px;
+      gap: 20px;
+      width: 100%;
+      border-radius: 0;
+      margin: 72px 0 30px;
+    }
+
+    .left_container {
+      width: 85%;
+    }
   }
 
-  .image-container {
-    width: auto;
-  }
+  @media (max-width: 450px) {
+    .avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-left: -5px;
+    }
 
-  .phone-img {
-    max-width: 500px;
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 24px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 40px;
+      line-height: 50px;
+      font-family: LatoBold;
+      margin-bottom: 10px;
+    }
   }
 }
 </style>

@@ -1,23 +1,4 @@
 <template>
-  <!-- NAVBAR -->
-  <nav class="fixed top-0 left-0 z-50 w-full bg-white border-b border-gray-100">
-    <div
-      class="mx-auto w-full max-w-[1400px] px-4 md:px-6 lg:px-10 2xl:px-20 py-4 flex items-center justify-between"
-    >
-      <router-link to="/" class="shrink-0">
-        <img :src="logo" alt="Logo" class="h-8 w-auto" />
-      </router-link>
-
-      <div class="hidden lg:flex items-center gap-8">
-        <router-link to="/stokvel" class="font-medium text-gray-700">Stokvel</router-link>
-        <router-link to="/flexrand" class="font-medium text-gray-700">FlexRand</router-link>
-        <router-link to="/security" class="font-medium text-gray-700">Security</router-link>
-        <router-link to="/faqs" class="font-medium text-gray-700">FAQs</router-link>
-      </div>
-
-      <div class="hidden md:block w-[150px]"></div>
-    </div>
-  </nav>
 
   <!-- MAIN -->
   <main class="mt-20 md:mt-24 pb-16 md:pb-24 px-4 md:px-6 lg:px-10 2xl:px-20 max-w-[1400px] mx-auto">
@@ -98,7 +79,6 @@
 
 <script setup>
 import { ref } from 'vue'
-import logo from '@/assets/logo.png'
 import numbersData from '@/assets/numbers.json'
 
 const countries = ref(numbersData)
