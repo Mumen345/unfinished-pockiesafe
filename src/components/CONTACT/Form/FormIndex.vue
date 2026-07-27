@@ -20,7 +20,7 @@
   </nav>
 
   <!-- MAIN -->
-  <main class="mt-24 pb-24 px-4 md:px-6 lg:px-10 2xl:px-20 max-w-[1400px] mx-auto">
+  <main class="mt-20 md:mt-24 pb-16 md:pb-24 px-4 md:px-6 lg:px-10 2xl:px-20 max-w-[1400px] mx-auto">
     <div class="contact-grid">
 
       <!-- MAP SIDE -->
@@ -45,31 +45,41 @@
       <div class="form-side">
 
         <div class="form-row">
-          <div>
+          <div class="input-group">
             <label>First Name</label>
             <input type="text" placeholder="Enter First Name" />
           </div>
 
-          <div>
+          <div class="input-group">
             <label>Last Name</label>
             <input type="text" placeholder="Enter Last Name" />
           </div>
         </div>
 
         <div class="form-row">
-          <div>
+          <div class="input-group">
             <label>Email</label>
             <input type="email" placeholder="Enter your Email" />
           </div>
 
-          <div>
+          <div class="input-group">
             <label>Phone Number</label>
             <div class="phone-container">
-              <vue-country-code
-                @onSelect="onSelect"
-                :preferredCountries="['vn', 'us', 'gb']"
-              />
-              <input type="tel" placeholder="Enter Phone Number" />
+              <select v-model="selectedDialCode" class="country-select">
+                <option 
+                  v-for="(country, index) in countries" 
+                  :key="index" 
+                  :value="country.dialCode"
+                >
+                  {{ country.name }} ({{ country.dialCode }})
+                </option>
+              </select>
+              
+              <!-- Phone number input with integrated dial code badge below it -->
+              <div class="phone-input-wrapper">
+                <span class="prefix-badge">{{ selectedDialCode }}</span>
+                <input type="tel" placeholder="Enter Phone Number" class="phone-input" />
+              </div>
             </div>
           </div>
         </div>
@@ -87,29 +97,12 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import logo from '@/assets/logo.png'
+import numbersData from '@/assets/numbers.json'
 
-const countries = ref([])
-const selectedCountry = ref('ZA')
-
-const onSelect = ({ name, iso2, dialCode }) => {
-  console.log(name, iso2, dialCode)
-}
-
-onMounted(async () => {
-  try {
-    const res = await fetch(
-      'https://restcountries.com/v3.1/all?fields=name,cca2'
-    )
-    const data = await res.json()
-    countries.value = data.sort((a, b) =>
-      a.name.common.localeCompare(b.name.common)
-    )
-  } catch (err) {
-    console.error('Error fetching countries:', err)
-  }
-})
+const countries = ref(numbersData)
+const selectedDialCode = ref('+27')
 </script>
 
 <style scoped>
@@ -121,13 +114,16 @@ onMounted(async () => {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
-  padding: 40px 0;
+  padding: 20px 0;
+  width: 100%;
 }
 
 .map-side {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 100%;
+  min-width: 0;
 }
 
 .map-frame {
@@ -142,6 +138,7 @@ onMounted(async () => {
   padding: 16px;
   border-radius: 10px;
   text-align: center;
+  word-break: break-word;
 }
  
 .map-info-box i {
@@ -154,11 +151,22 @@ onMounted(async () => {
   font-size: 24px;
 } 
 
+.form-side {
+  width: 100%;
+  min-width: 0;
+}
+
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   margin-bottom: 20px;
+  width: 100%;
+}
+
+.input-group {
+  width: 100%;
+  min-width: 0;
 }
 
 label {
@@ -173,20 +181,69 @@ textarea {
   padding: 12px;
   border: 1px solid #ddd;
   border-radius: 8px;
+  box-sizing: border-box;
 }
 
 textarea {
   min-height: 120px;
-  resize: none;
+  resize: vertical;
 }
 
 .message-box {
   margin-bottom: 20px;
+  width: 100%;
 }
 
 .phone-container {
   display: flex;
+  flex-direction: column;
+  flex-direction: column; /* Explicitly requested vertical stack */
   gap: 10px;
+  width: 100%;
+}
+
+.country-select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.phone-input-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.prefix-badge {
+  padding: 0 12px;
+  font-size: 14px;
+  color: #555;
+  background-color: #f9f9f9;
+  border-right: 1px solid #ddd;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.phone-input {
+  border: none !important;
+  outline: none;
+  flex: 1;
+  padding: 12px;
+  width: 100%;
+  min-width: 0;
 }
 
 .send-btn {
@@ -198,19 +255,38 @@ textarea {
   border-radius: 25px;
   font-weight: bold;
   cursor: pointer;
+  transition: background 0.2s ease;
 }
 
-@media (max-width: 900px) {
+.send-btn:hover {
+  background: #4a3cb8;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
   .contact-grid {
     grid-template-columns: 1fr;
-  }
-
-  .form-row {
-    grid-template-columns: 1fr;
+    gap: 30px;
   }
 
   .map-frame {
-    height: 280px;
+    height: 350px;
+  }
+}
+
+@media (max-width: 640px) {
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .map-frame {
+    height: 260px;
+  }
+
+  main {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }
 
@@ -222,5 +298,5 @@ textarea {
   .map-frame {
     height: 520px;
   }
-}
+} 
 </style>

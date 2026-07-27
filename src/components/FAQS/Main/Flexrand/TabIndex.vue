@@ -150,5 +150,5 @@ p {
   margin: 0 0 1rem 0;
   line-height: 1.6;
   font-size: 15px;
-}
+} 
 </style>
